@@ -50,9 +50,9 @@ class bro_table extends CI_Model {
         $return_code = true;
 
         // Validate URL
-        if(!filter_var($input['url'], FILTER_VALIDATE_URL)) {
-            $return_code = false;
-        }
+        // if(!filter_var($input['url'], FILTER_VALIDATE_URL)) {
+        //     $return_code = false;
+        // }
 
         // Validate type
         // $type_validator = function($value) {
