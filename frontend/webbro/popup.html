@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>WebBro</title>
+    <link rel="stylesheet" type="text/css" href="css/pure-min.css">
     <link rel="stylesheet" type="text/css" href="css/popup.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -9,6 +10,18 @@
 </head>
 <body>
     <div id="content">
+        
+    </div>
+    <div id="loader" style="hidden:none"></div>
+    <div id="post">
+        <section class="card">
+            <br/>
+            <form id="comment" class="pure-form pure-form-stacked">
+                <input type="text" id="username" class="pure-input-1" placeholder="Username">
+                <textarea type="text" id="description" class="pure-input-1 tall-text" placeholder="Enter your comment"></textarea>
+                <button type="submit" class="pure-button">Post Comment</button>
+            </form>
+        </section>
     </div>
     </body>
 </html>

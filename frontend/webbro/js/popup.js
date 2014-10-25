@@ -1,14 +1,44 @@
 var resultElement = '#content';
 var loaderElement = '#loader';
 var getCommentsURI = 'http://localhost/web/TAMUHack2014/web/index.php/welcome/get_url_comment';
+var postCommentsURI = 'http://localhost/web/TAMUHack2014/web/index.php/welcome/new_comment';
+var pageUrl = "";
 
 $(function(){
-    var comments = null;
+    $('#comment').on('submit', function(e){
+        e.preventDefault(); 
+        submitComment();
+    });
     chrome.tabs.getSelected(null, function(tab) {
-        createUrlCard(tab.url);
-        getUrlComments(tab.url);
+        pageUrl = tab.url;
+        createUrlCard(pageUrl);
+        getUrlComments(pageUrl);
 	});
 });
+
+function submitComment() {
+    var pData = {
+        "url"  : encodeURIComponent(pageUrl),
+        "type" : 1,
+        "username" : encodeURIComponent($('#username').val()), 
+        "description" : encodeURIComponent($('#description').val())
+    }
+    
+    showLoader();
+    $.ajax({
+        type: "POST",
+        url: postCommentsURI,
+        data: pData
+    })
+    .done(function(msg) {
+        alert(msg);
+        hideLoader();
+    })
+    .fail(function(msg) {
+        alert(msg);
+    });
+    
+}
 
 function createCard(card){
     console.log(card);
@@ -39,6 +69,8 @@ function getUrlComments(tabUrl){
         for (var i = 0; i < length; i++) {
             createCard(msg[i]);
         }
+    }).fail(function(msg) {
+        alert(msg);
     });
 }
 
