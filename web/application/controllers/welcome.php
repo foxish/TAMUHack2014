@@ -19,7 +19,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		echo "bla";
+        $this->load->model('bro_table');
+        return $this->bro_table->add_new_comment();
+        //$this->load->view('welcome_message');
 	}
 }
 
