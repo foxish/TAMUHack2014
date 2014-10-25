@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = '10.201.73.232';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'secretyeah';
+$db['default']['username'] = 'webbro2';
+$db['default']['password'] = 'secret#';
 $db['default']['database'] = 'webbro';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
