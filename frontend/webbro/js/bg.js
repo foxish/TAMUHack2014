@@ -1,8 +1,3 @@
-
- // Adapt as you please! But do not remove this header
-// Creative-Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)
-// Developer: Anirudh R (http://anirudhr.com/about.php)
-
 var isTurnedOn = false;//manipulated only by popup.js, tells if player is turned on
 
 var conskey = "447c9e9c4c57e6d07b73eac8b899bee6";//api-key
