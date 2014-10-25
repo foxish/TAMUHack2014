@@ -24,7 +24,7 @@ body{
 }
 
 #loader{
-    background: url('../images/loader.gif') no-repeat fixed;
+    background: url('../images/loader.gif') no-repeat center fixed;
     height: 200px;
     width: 100%;
 }
