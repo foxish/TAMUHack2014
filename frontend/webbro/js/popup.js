@@ -88,9 +88,9 @@ function createCard(card){
                 doPostAction(flagUrl, this.id)
             });
     section.append(imgUp)
-           .append('&nbsp;' + '(' + card.upvotes + ')&nbsp;&nbsp;&nbsp;')
+           .append('<span class="floatup">&nbsp;' + '(' + card.upvotes + ')&nbsp;&nbsp;&nbsp;</span>')
            .append(imgDn)
-           .append('&nbsp;' + '(' + card.downvotes + ')&nbsp;&nbsp;&nbsp;')
+           .append('<span class="floatup">&nbsp;' + '(' + card.downvotes + ')&nbsp;&nbsp;&nbsp;</span>')
            .append(imgFlag);
     $(resultElement).append(section);
 }
