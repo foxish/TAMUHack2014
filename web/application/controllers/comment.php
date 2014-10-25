@@ -18,7 +18,7 @@ class Comment extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	public function new() {
+	public function add() {
 		$data = $this->input->post();
 		$this->load->model('bro_table');
 		return $this->bro_table->add_new_comment($data);
