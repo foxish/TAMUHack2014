@@ -1,6 +1,6 @@
 {
   "name": "WebBro",
-  "version": "0.99",
+  "version": "1.00",
   "manifest_version": 2,
   "description": "Crowd-sourced commentary for the web",
   "browser_action": {
@@ -10,7 +10,6 @@
   
   "permissions": [
 	"<all_urls>",
-	"bookmarks",
 	"tabs",
 	"storage"
   ],
