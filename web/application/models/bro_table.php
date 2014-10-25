@@ -2,13 +2,14 @@
 
 class bro_table extends CI_Model {
 
-    private static $DB_TABLE      = 'bro_table';
+    private static $DB_TABLE        = 'bro_table';
+    private static $TYPES           = array('Tip', 'Suggestion');
 
     // RETURN ERROR CODES
-    private static $SUCCESS       = array('ERROR' => 0, 'REASON' => null);
-    private static $INVALID_URL   = array('ERROR' => 1, 'REASON' => 'INVALID URL');
-    private static $INVALID_TYPE  = array('ERROR' => 2, 'REASON' => 'INVALID TYPE');
-    private static $INVALID_STAR  = array('ERROR' => 3, 'REASON' => 'INVALID STAR');
+    private static $SUCCESS         = array('ERROR' => 0, 'REASON' => null);
+    private static $INVALID_URL     = array('ERROR' => 1, 'REASON' => 'INVALID URL');
+    private static $INVALID_TYPE    = array('ERROR' => 2, 'REASON' => 'INVALID TYPE');
+    private static $INVALID_STAR    = array('ERROR' => 3, 'REASON' => 'INVALID STAR');
 
     function add_new_comment($input){
         $data = array(
@@ -44,8 +45,7 @@ class bro_table extends CI_Model {
         }
 
         unset($validate_result['return']);
-        $validate_result['DATA'] = $fetched_data;
-        echo json_encode($validate_result);
+        echo json_encode($fetched_data);
         return;
     }
 
@@ -60,6 +60,18 @@ class bro_table extends CI_Model {
             $return_code = self::$INVALID_URL;
             $return_code['return'] = false;
         }
+
+        // Validate type
+        // $type_validator = function($value) {
+        //     foreach ($arr as &$value) {
+        //         $value = $value * 2;
+        //     }
+        // };
+
+        // if(!($input['type'] == 'Tip' || ))
+
+        unset($return_code['ERROR']);
+        unset($return_code['REASON']);
 
         return $return_code;
     }

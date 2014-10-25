@@ -27,7 +27,7 @@ class Welcome extends CI_Controller {
 	public function new_comment() {
 		$data = $this->input->post();
 		$data = array(
-            'url'           => 'http://php.net/manual/en/language.types.array.php' ,
+            'url'           => 'https://docs.google.com/document/d/1jO4n9lzfvuKhYyvsNMumQXY0sbzXi7UbRMM5bNv-Mps/edit' ,
             'type'          => 2 ,
             'description'   => 3,
             'star'			=> null,
@@ -40,7 +40,6 @@ class Welcome extends CI_Controller {
 	public function get_url_comment() {
 		$data = $this->input->post();
 		$this->load->model('bro_table');
-		$data = array('url' => 'http://php.net/manual/en/language.types.array.php');
 		return $this->bro_table->fetch_url_data($data);
 	}
 
