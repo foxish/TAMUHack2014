@@ -29,8 +29,9 @@ class Welcome extends CI_Controller {
 		$data = array(
             'url'           => 'https://docs.google.com/document/d/1jO4n9lzfvuKhYyvsNMumQXY0sbzXi7UbRMM5bNv-Mps/edit' ,
             'type'          => 2 ,
-            'description'   => 3,
+            'description'   => '$this->db->select() accepts an optional second parameter. If you set it to FALSE, CodeIgniter will not try to protect your field or table names with backticks. This is useful if you need a compound select statement.',
             'star'			=> null,
+            'username' 		=> 'fox',
         );
 
 		$this->load->model('bro_table');

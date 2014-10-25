@@ -26,39 +26,31 @@ class bro_table extends CI_Model {
             $data['username'] = $input['username'];
         }
 
-        $validate_result = $this->_validate($data);
-        if($validate_result['return']) {
+        if($this->_validate($data)) {
             $this->db->insert(self::$DB_TABLE, $data);
         }
 
-        unset($validate_result['return']);
-        echo json_encode($validate_result);
+        $this->_return_null();
         return;
     }
 
     function fetch_url_data($data) {
-        $validate_result = $this->_validate($data);
-
         $fetched_data = array();
-        if($validate_result['return']) {
+        if($this->_validate($data)) {
             $fetched_data = $this->db->get_where(self::$DB_TABLE, $data)->result();
         }
 
-        unset($validate_result['return']);
         echo json_encode($fetched_data);
         return;
     }
 
-    // Return an array of the form ('return' => false, 'reason' => '2')
+    // Return true or false
     function _validate($input) {
-
-        $return_code = self::$SUCCESS;
-        $return_code['return'] = true;
+        $return_code = true;
 
         // Validate URL
         if(!filter_var($input['url'], FILTER_VALIDATE_URL)) {
-            $return_code = self::$INVALID_URL;
-            $return_code['return'] = false;
+            $return_code = false;
         }
 
         // Validate type
@@ -70,10 +62,11 @@ class bro_table extends CI_Model {
 
         // if(!($input['type'] == 'Tip' || ))
 
-        unset($return_code['ERROR']);
-        unset($return_code['REASON']);
-
         return $return_code;
+    }
+
+    function _return_null() {
+        echo json_encode(array());
     }
 
 }
