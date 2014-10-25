@@ -7,10 +7,10 @@ class Welcome extends CI_Controller {
 	 *
 	 * Maps to the following URL
 	 * 		http://example.com/index.php/welcome
-	 *	- or -  
+	 *	- or -
 	 * 		http://example.com/index.php/welcome/index
 	 *	- or -
-	 * Since this controller is set as the default controller in 
+	 * Since this controller is set as the default controller in
 	 * config/routes.php, it's displayed at http://example.com/
 	 *
 	 * So any other public methods not prefixed with an underscore will
@@ -21,9 +21,32 @@ class Welcome extends CI_Controller {
 	{
 		echo "bla";
         $this->load->model('bro_table');
-        return $this->bro_table->add_new_comment();
+        // return $this->bro_table->add_new_comment();
         //$this->load->view('welcome_message');
 	}
+
+	public function new_comment()
+	{
+		$data = $this->input->post();
+		$data = array(
+            'url'           => 1 ,
+            'type'          => 2 ,
+            'description'   => 3,
+            'star'			=> null,
+        );
+
+		$this->load->model('bro_table');
+		return $this->bro_table->add_new_comment($data);
+	}
+
+	public function get_url_comment()
+	{
+		$data = $this->input->post();
+		$this->load->model('bro_table');
+		$data = array('url' => 1);
+		return $this->bro_table->fetch_url_data($data['url']);
+	}
+
 }
 
 /* End of file welcome.php */
