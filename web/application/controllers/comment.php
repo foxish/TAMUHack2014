@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Comment extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,9 +17,6 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index() {
-        $this->load->model('bro_table');
-	}
 
 	public function new_comment() {
 		$data = $this->input->post();
