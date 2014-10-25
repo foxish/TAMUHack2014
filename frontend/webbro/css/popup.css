@@ -11,12 +11,20 @@ Developer: Anirudh R (http://anirudhr.com/about.php) */
 	vertical-align:baseline;
 }
 body{
-	background-color:#000000;
-	color:#646464;
+	background-color:#d5d5d5;
+    width: 300px;
 	font:12px/16px 'Roboto', sans-serif;
-	height:475px;
+    color: #fffff;
+	height:300px;
 	overflow:hidden;
 }
+
+#loading{
+    background: url('../images/loader.gif') no-repeat fixed center;
+    height: 100%;
+    width: 100%;
+}
+
 ol,ul{
 	list-style:none;
 	list-style-image:none;
@@ -39,7 +47,7 @@ p{
 	sans-serif;padding:0 2px 10px;
 }
 h4{
-	color:#ffffff;
+	color:#eeeee;
 	font:20px 'Roboto', sans-serif;
 	padding:6px 0 0px;
 	text-align:center
@@ -90,6 +98,8 @@ h5{
 	width:300px;
 	height:130px;
 }
+
+
 img{
 	cursor:pointer;
 }
