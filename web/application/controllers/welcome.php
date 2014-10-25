@@ -17,16 +17,14 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
+	public function index() {
 		echo "bla";
         $this->load->model('bro_table');
         // return $this->bro_table->add_new_comment();
         //$this->load->view('welcome_message');
 	}
 
-	public function new_comment()
-	{
+	public function new_comment() {
 		$data = $this->input->post();
 		$data = array(
             'url'           => 1 ,
@@ -39,8 +37,7 @@ class Welcome extends CI_Controller {
 		return $this->bro_table->add_new_comment($data);
 	}
 
-	public function get_url_comment()
-	{
+	public function get_url_comment() {
 		$data = $this->input->post();
 		$this->load->model('bro_table');
 		$data = array('url' => 1);
