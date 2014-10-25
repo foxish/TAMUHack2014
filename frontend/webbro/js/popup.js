@@ -76,7 +76,7 @@ function createCard(card){
             .attr('id', card.id)
             .on('click', function(e){
                 e.preventDefault();
-                doPostAction(upvoteUrl, this.id)
+                doPostAction(upvoteComment, this.id)
             });
             
     var imgDn = $('<img></img>')
@@ -84,7 +84,7 @@ function createCard(card){
             .attr('id', card.id)
             .on('click', function(e){
                 e.preventDefault();
-                doPostAction(downvoteUrl, this.id)
+                doPostAction(downvoteComment, this.id)
             });
             
     var imgFlag = $('<img></img>')
@@ -92,7 +92,7 @@ function createCard(card){
             .attr('id', card.id)
             .on('click', function(e){
                 e.preventDefault();
-                doPostAction(flagUrl, this.id)
+                doPostAction(flagComment, this.id)
             });
     section.append(imgUp)
            .append('<span class="floatup">&nbsp;' + '(' + card.upvotes + ')&nbsp;&nbsp;&nbsp;</span>')
