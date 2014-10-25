@@ -4,6 +4,10 @@ var getCommentsURI = 'http://localhost/web/TAMUHack2014/web/index.php/welcome/ge
 var postCommentsURI = 'http://localhost/web/TAMUHack2014/web/index.php/welcome/new_comment';
 var pageUrl = "";
 
+var upvoteUrl = "http://localhost/web/TAMUHack2014/web/index.php/welcome/upvote";
+var downvoteUrl = "http://localhost/web/TAMUHack2014/web/index.php/welcome/downvote";
+var flagUrl = "http://localhost/web/TAMUHack2014/web/index.php/welcome/spam";
+
 $(function(){
     $('#comment').on('submit', function(e){
         e.preventDefault(); 
@@ -11,7 +15,6 @@ $(function(){
     });
     chrome.tabs.getSelected(null, function(tab) {
         pageUrl = tab.url;
-        createUrlCard(pageUrl);
         getUrlComments(pageUrl);
 	});
 });
@@ -26,6 +29,7 @@ function submitComment() {
     }
     
     showLoader();
+    $(resultElement).html('');
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -38,6 +42,7 @@ function submitComment() {
         getUrlComments(pageUrl);
     })
     .fail(function(msg) {
+        hideLoader();
         alert(msg.response);
     });
 }
@@ -46,7 +51,6 @@ function clearForm(){
     $('#title').val("");
     $('#username').val("");
     $('#description').val("");
-    
 }
 
 function createCard(card){
@@ -54,10 +58,60 @@ function createCard(card){
     var section = $('<section></section>')
                     .addClass('card')
                     .append('<h1 class="singleline">' + card.title + '</h1>')
-                    .append('<h2>' + card.description + '</h2>')
                     .append('<h5 class="floatleft">' + card.timestamp + '</h5>')
-                    .append('<h5 class="floatright">' + card.username + '</h5>');
+                    .append('<h5 class="floatright">' + card.username + '</h5>')
+                    .append('<br/>')
+                    .append('<h2>' + card.description + '</h2>')
+                    .append('<br/>');
+                    
+    var imgUp = $('<img></img>')
+            .attr('src', 'images/thumbs_up.png')
+            .attr('id', card.id)
+            .on('click', function(e){
+                e.preventDefault();
+                doPostAction(upvoteUrl, this.id)
+            });
+            
+    var imgDn = $('<img></img>')
+            .attr('src', 'images/thumbs_down.png')
+            .attr('id', card.id)
+            .on('click', function(e){
+                e.preventDefault();
+                doPostAction(downvoteUrl, this.id)
+            });
+            
+    var imgFlag = $('<img></img>')
+            .attr('src', 'images/flag.png')
+            .attr('id', card.id)
+            .on('click', function(e){
+                e.preventDefault();
+                doPostAction(flagUrl, this.id)
+            });
+    section.append(imgUp)
+           .append('&nbsp;' + '(' + card.upvotes + ')&nbsp;&nbsp;&nbsp;')
+           .append(imgDn)
+           .append('&nbsp;' + '(' + card.downvotes + ')&nbsp;&nbsp;&nbsp;')
+           .append(imgFlag);
     $(resultElement).append(section);
+}
+
+function doPostAction(url, id){
+    showLoader();
+    $(resultElement).html('');
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {"id": id}
+    })
+    .done(function(msg) {
+        hideLoader();
+        clearForm();
+        getUrlComments(pageUrl);
+    })
+    .fail(function(msg) {
+        hideLoader();
+        alert(msg.response);
+    });
 }
 
 function createUrlCard(url){
@@ -68,6 +122,10 @@ function createUrlCard(url){
 }
 
 function getUrlComments(tabUrl){
+    showLoader();
+    $(resultElement).html('');
+    
+    createUrlCard(pageUrl);
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -81,6 +139,7 @@ function getUrlComments(tabUrl){
             createCard(msg[i]);
         }
     }).fail(function(msg) {
+        hideLoader();
         alert(msg);
     });
 }
