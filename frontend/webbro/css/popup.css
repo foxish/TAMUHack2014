@@ -24,7 +24,7 @@ body{
 }
 
 #loader{
-    background: url('../images/loader.gif') no-repeat fixed;
+    background: url('../images/loader.gif') no-repeat center fixed;
     height: 200px;
     width: 100%;
 }
@@ -109,9 +109,6 @@ h4{
 .right{
 	float:right;
 	margin:0 0 5px 15px;
-}
-h5{
-	font:20px 'Roboto', sans-serif;
 }
 #mainwrap{
 	margin:0 auto;
@@ -245,7 +242,7 @@ x 9px -3px rgba(255,255,255,0.2);
 
 
 h1 {
-  font-size:1.2rem;
+  font-size:1.0rem;
   font-weight:200;
 }
 
@@ -254,6 +251,22 @@ h2 {
   line-height:1.0;
   color:#0e0e0e;
   font-weight:400;
+}
+
+h5 {
+    color: gray;
+    padding: 0px;
+    margin: 0px;
+}
+
+.floatright {
+    float:right;
+    clear:none;
+}
+
+.floatleft {
+    float:left;
+    clear:none;
 }
 
 .gray {

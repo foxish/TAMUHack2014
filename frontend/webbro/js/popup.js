@@ -18,25 +18,34 @@ $(function(){
 
 function submitComment() {
     var pData = {
-        "url"  : encodeURIComponent(pageUrl),
+        "url"  : pageUrl,
         "type" : 1,
-        "username" : encodeURIComponent($('#username').val()), 
-        "description" : encodeURIComponent($('#description').val())
+        "title" : $('#title').val(), 
+        "username" : $('#username').val(), 
+        "description" : $('#description').val()
     }
     
     showLoader();
     $.ajax({
         type: "POST",
+        dataType: "json",
         url: postCommentsURI,
         data: pData
     })
     .done(function(msg) {
-        alert(msg);
         hideLoader();
+        clearForm();
+        getUrlComments(pageUrl);
     })
     .fail(function(msg) {
-        alert(msg);
+        alert(msg.response);
     });
+}
+
+function clearForm(){
+    $('#title').val("");
+    $('#username').val("");
+    $('#description').val("");
     
 }
 
@@ -44,8 +53,10 @@ function createCard(card){
     console.log(card);
     var section = $('<section></section>')
                     .addClass('card')
-                    .append('<h1 class="singleline">' + card.username + '</h1>')
-                    .append('<h2>' + card.description + '</h2>');
+                    .append('<h1 class="singleline">' + card.title + '</h1>')
+                    .append('<h2>' + card.description + '</h2>')
+                    .append('<h5 class="floatleft">' + card.timestamp + '</h5>')
+                    .append('<h5 class="floatright">' + card.username + '</h5>');
     $(resultElement).append(section);
 }
 
