@@ -1,27 +1,52 @@
-// Adapt as you please! But do not remove this header
-// Creative-Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)
+var resultElement = '#content';
+var loaderElement = '#loader';
+var getCommentsURI = 'http://localhost/web/TAMUHack2014/web/index.php/welcome/get_url_comment';
+
 $(function(){
-    //wait till DOM loads before referencing any elements
     var comments = null;
     chrome.tabs.getSelected(null, function(tab) {
-		get_url_comments(tab.url);
+        createUrlCard(tab.url);
+        getUrlComments(tab.url);
 	});
 });
 
-function get_url_comments(tab_url){
+function createCard(card){
+    var section = $('<section></section>')
+                    .addClass('card')
+                    .append('<h2 class="singleline">' + card.user + '</h2>');
+    $(resultElement).append(section);
+}
+
+function createUrlCard(url){
+    var section = $('<section></section>')
+                    .addClass('card')
+                    .append('<h2 class="singleline">' + url + '</h2>');
+    $(resultElement).append(section);
+}
+
+function getUrlComments(tabUrl){
     $.ajax({
-      type: "POST",
-      dataType: "json",
-      url: "http://localhost/web/TAMUHack2014/web/index.php/welcome/get_url_comment",
-      data: {}
+        type: "POST",
+        dataType: "json",
+        url: getCommentsURI,
+        data: {}
     })
     .done(function(msg) {
-        //create_cards(msg);
+        hideLoader();
+        var length = msg.length;
+        for (var i = 0; i < length; i++) {
+            createCard(msg[i]);
+        }
     });
 }
 
+function hideLoader(){
+    $(loaderElement).hide();
+}
 
-
+function showLoader(){
+    $(loaderElement).show();
+}
 
 function setEventListeners(){
 	$('#search_button').click(function(){
