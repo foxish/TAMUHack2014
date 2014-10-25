@@ -4,9 +4,9 @@ var getCommentsURI = 'http://localhost/web/TAMUHack2014/web/index.php/welcome/ge
 var postCommentsURI = 'http://localhost/web/TAMUHack2014/web/index.php/welcome/new_comment';
 var pageUrl = "";
 
-var upvoteUrl = "http://localhost/web/TAMUHack2014/web/index.php/welcome/upvote";
-var downvoteUrl = "http://localhost/web/TAMUHack2014/web/index.php/welcome/downvote";
-var flagUrl = "http://localhost/web/TAMUHack2014/web/index.php/welcome/spam";
+var upvoteUrl = "http://webbro2.azurewebsites.net/web/index.php/comment/upvote";
+var downvoteUrl = "http://webbro2.azurewebsites.net/web/index.php/comment/downvote";
+var flagUrl = "http://webbro2.azurewebsites.net/web/index.php/comment/spam";
 
 $(function(){
     $('#comment').on('submit', function(e){
