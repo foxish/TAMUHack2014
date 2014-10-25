@@ -28,6 +28,7 @@ class bro_table extends CI_Model {
         }
 
         if($this->_validate($data)) {
+            $data['url'] = $this->clear_url($data['url']);
             $this->db->insert(self::$DB_TABLE, $data);
         }
 
@@ -37,6 +38,7 @@ class bro_table extends CI_Model {
 
     function fetch_url_data($data) {
         $fetched_data = array();
+        $data['url'] = $this->clear_url($data['url']);
         if($this->_validate($data)) {
             $data['spam <'] = 5;
             $fetched_data = $this->db->order_by('upvotes', 'desc')->order_by('downvotes', 'desc')->order_by('timestamp', 'desc')->get_where(self::$DB_TABLE, $data, 5)->result();
@@ -45,6 +47,13 @@ class bro_table extends CI_Model {
 
         echo json_encode($fetched_data);
         return;
+    }
+
+    function clear_url($url)
+    {
+        $temp = parse_url($url);
+        unset($temp['query']);
+        return http_build_query($temp);
     }
 
     // Return true or false
