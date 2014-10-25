@@ -16,6 +16,7 @@ class bro_table extends CI_Model {
             'url'           => $input['url'] ,
             'type'          => $input['type'] ,
             'description'   => $input['description'],
+            'title'         => $input['title'],
         );
 
         if(isset($input['stars'])) {
@@ -37,7 +38,7 @@ class bro_table extends CI_Model {
     function fetch_url_data($data) {
         $fetched_data = array();
         if($this->_validate($data)) {
-            $fetched_data = $this->db->get_where(self::$DB_TABLE, $data)->result();
+            $fetched_data = $this->db->order_by('upvotes', 'desc')->get_where(self::$DB_TABLE, $data, 5)->result();
         }
 
         echo json_encode($fetched_data);
@@ -69,5 +70,37 @@ class bro_table extends CI_Model {
         echo json_encode(array());
     }
 
+    function upvote($data) {
+        $current = $this->db->get_where(self::$DB_TABLE, $data)->row();
+        $current->upvotes++;
+
+        $this->db->where('Id', $data['Id']);
+        $this->db->update(self::$DB_TABLE, $current);
+
+        // echo $upvotes;
+        echo json_encode($current);
+    }
+
+    function downvote($data) {
+        $current = $this->db->get_where(self::$DB_TABLE, $data)->row();
+        $current->downvotes--;
+
+        $this->db->where('Id', $data['Id']);
+        $this->db->update(self::$DB_TABLE, $current);
+
+        // echo $upvotes;
+        echo json_encode($current);
+    }
+
+    function spam($data) {
+        $current = $this->db->get_where(self::$DB_TABLE, $data)->row();
+        $current->spam++;
+
+        $this->db->where('Id', $data['Id']);
+        $this->db->update(self::$DB_TABLE, $current);
+
+        // echo $upvotes;
+        echo json_encode($current);
+    }
 }
 ?>

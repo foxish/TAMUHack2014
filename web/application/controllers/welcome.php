@@ -18,7 +18,6 @@ class Welcome extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index() {
-		echo "bla";
         $this->load->model('bro_table');
         // return $this->bro_table->add_new_comment();
         //$this->load->view('welcome_message');
@@ -26,13 +25,14 @@ class Welcome extends CI_Controller {
 
 	public function new_comment() {
 		$data = $this->input->post();
-		$data = array(
-            'url'           => 'https://docs.google.com/document/d/1jO4n9lzfvuKhYyvsNMumQXY0sbzXi7UbRMM5bNv-Mps/edit' ,
-            'type'          => 2 ,
-            'description'   => '$this->db->select() accepts an optional second parameter. If you set it to FALSE, CodeIgniter will not try to protect your field or table names with backticks. This is useful if you need a compound select statement.',
-            'star'			=> null,
-            'username' 		=> 'fox',
-        );
+		// $data = array(
+  //           'url'           => 'https://docs.google.com/document/d/1jO4n9lzfvuKhYyvsNMumQXY0sbzXi7UbRMM5bNv-Mps/edit' ,
+  //           'type'          => 2 ,
+  //           'description'   => '$this->db->select() accepts an optional second parameter. If you set it to FALSE, CodeIgniter will not try to protect your field or table names with backticks. This is useful if you need a compound select statement.',
+  //           'star'			=> null,
+  //           'username' 		=> 'fox',
+  //           'title' 		=> 'Good website + awesome freebies!!',
+  //       );
 
 		$this->load->model('bro_table');
 		return $this->bro_table->add_new_comment($data);
@@ -41,7 +41,29 @@ class Welcome extends CI_Controller {
 	public function get_url_comment() {
 		$data = $this->input->post();
 		$this->load->model('bro_table');
+		$data = array('url' => 'https://docs.google.com/document/d/1jO4n9lzfvuKhYyvsNMumQXY0sbzXi7UbRMM5bNv-Mps/edit');
 		return $this->bro_table->fetch_url_data($data);
+	}
+
+	public function upvote() {
+		$data = $this->input->post();
+		$this->load->model('bro_table');
+		// $data['Id'] = 36;
+		return $this->bro_table->upvote($data);
+	}
+
+	public function downvote() {
+		$data = $this->input->post();
+		$this->load->model('bro_table');
+		// $data['Id'] = 36;
+		return $this->bro_table->downvote($data);
+	}
+
+	public function spam() {
+		$data = $this->input->post();
+		$this->load->model('bro_table');
+		// $data['Id'] = 36;
+		return $this->bro_table->spam($data);
 	}
 
 }
