@@ -38,8 +38,10 @@ class bro_table extends CI_Model {
     function fetch_url_data($data) {
         $fetched_data = array();
         if($this->_validate($data)) {
+            $data['spam <'] = 5;
             $fetched_data = $this->db->order_by('upvotes', 'desc')->get_where(self::$DB_TABLE, $data, 5)->result();
         }
+
 
         echo json_encode($fetched_data);
         return;
@@ -74,7 +76,7 @@ class bro_table extends CI_Model {
         $current = $this->db->get_where(self::$DB_TABLE, $data)->row();
         $current->upvotes++;
 
-        $this->db->where('Id', $data['Id']);
+        $this->db->where('id', $data['id']);
         $this->db->update(self::$DB_TABLE, $current);
 
         // echo $upvotes;
@@ -85,7 +87,7 @@ class bro_table extends CI_Model {
         $current = $this->db->get_where(self::$DB_TABLE, $data)->row();
         $current->downvotes--;
 
-        $this->db->where('Id', $data['Id']);
+        $this->db->where('id', $data['id']);
         $this->db->update(self::$DB_TABLE, $current);
 
         // echo $upvotes;
@@ -96,7 +98,7 @@ class bro_table extends CI_Model {
         $current = $this->db->get_where(self::$DB_TABLE, $data)->row();
         $current->spam++;
 
-        $this->db->where('Id', $data['Id']);
+        $this->db->where('id', $data['id']);
         $this->db->update(self::$DB_TABLE, $current);
 
         // echo $upvotes;
