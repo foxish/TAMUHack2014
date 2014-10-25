@@ -11,17 +11,19 @@ $(function(){
 });
 
 function createCard(card){
+    console.log(card);
     var section = $('<section></section>')
                     .addClass('card')
-                    .append('<h2 class="singleline">' + card.user + '</h2>');
+                    .append('<h1 class="singleline">' + card.username + '</h1>')
+                    .append('<h2>' + card.description + '</h2>');
     $(resultElement).append(section);
 }
 
 function createUrlCard(url){
     var section = $('<section></section>')
-                    .addClass('card')
+                    .addClass('card gray')
                     .append('<h2 class="singleline">' + url + '</h2>');
-    $(resultElement).append(section);
+    $(resultElement).prepend(section);
 }
 
 function getUrlComments(tabUrl){
@@ -29,7 +31,7 @@ function getUrlComments(tabUrl){
         type: "POST",
         dataType: "json",
         url: getCommentsURI,
-        data: {}
+        data: {'url': tabUrl}
     })
     .done(function(msg) {
         hideLoader();
