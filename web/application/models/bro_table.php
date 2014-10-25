@@ -31,7 +31,7 @@ class bro_table extends CI_Model {
             $this->db->insert(self::$DB_TABLE, $data);
         }
 
-        $this->_return_null();
+        $this->_return(array('response' => $this->db->_error_message()));
         return;
     }
 
@@ -66,8 +66,8 @@ class bro_table extends CI_Model {
         return $return_code;
     }
 
-    function _return_null() {
-        echo json_encode(array());
+    function _return($data) {
+        echo json_encode($data);
     }
 
     function upvote($data) {

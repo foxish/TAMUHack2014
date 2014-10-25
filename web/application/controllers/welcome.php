@@ -26,7 +26,7 @@ class Welcome extends CI_Controller {
 	public function new_comment() {
 		$data = $this->input->post();
 		// $data = array(
-  //           'url'           => 'https://docs.google.com/document/d/1jO4n9lzfvuKhYyvsNMumQXY0sbzXi7UbRMM5bNv-Mps/edit' ,
+  //           'url'           => 'https://www.google.com/?gws_rd=ssl' ,
   //           'type'          => 2 ,
   //           'description'   => '$this->db->select() accepts an optional second parameter. If you set it to FALSE, CodeIgniter will not try to protect your field or table names with backticks. This is useful if you need a compound select statement.',
   //           'star'			=> null,
