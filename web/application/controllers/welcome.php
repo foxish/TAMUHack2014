@@ -25,6 +25,8 @@ class Welcome extends CI_Controller {
 
 	public function new_comment() {
 		$data = $this->input->post();
+		var_dump($data);
+		die();
 		// $data = array(
   //           'url'           => 'https://www.google.com/?gws_rd=ssl' ,
   //           'type'          => 2 ,
