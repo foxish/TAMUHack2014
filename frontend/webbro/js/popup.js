@@ -4,7 +4,7 @@ var baseUrl = "http://webbro2.azurewebsites.net/web/index.php";
 
 //API endpoints
 var getComments = '/comment/get';
-var postComments = '/comment/new';
+var postComments = '/comment/add';
 var upvoteComment = "/comment/upvote";
 var downvoteComment = "/comment/downvote";
 var flagComment = "/comment/spam";
@@ -148,7 +148,7 @@ function getUrlComments(tabUrl){
         }
     }).fail(function(msg) {
         hideLoader();
-        alert(msg);
+        console.log(msg);
     });
 }
 
