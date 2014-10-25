@@ -34,6 +34,7 @@ function submitComment() {
     })
     .done(function(msg) {
         hideLoader();
+        clearForm();
         getUrlComments(pageUrl);
     })
     .fail(function(msg) {
@@ -52,8 +53,10 @@ function createCard(card){
     console.log(card);
     var section = $('<section></section>')
                     .addClass('card')
-                    .append('<h1 class="singleline">' + card.username + '</h1>')
-                    .append('<h2>' + card.description + '</h2>');
+                    .append('<h1 class="singleline">' + card.title + '</h1>')
+                    .append('<h2>' + card.description + '</h2>')
+                    .append('<h5 class="floatleft">' + card.timestamp + '</h5>')
+                    .append('<h5 class="floatright">' + card.username + '</h5>');
     $(resultElement).append(section);
 }
 
