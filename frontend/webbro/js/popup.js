@@ -1,12 +1,15 @@
 var resultElement = '#content';
 var loaderElement = '#loader';
-var getCommentsURI = 'http://localhost/web/TAMUHack2014/web/index.php/welcome/get_url_comment';
-var postCommentsURI = 'http://localhost/web/TAMUHack2014/web/index.php/welcome/new_comment';
-var pageUrl = "";
+var baseUrl = "http://webbro2.azurewebsites.net/web/index.php";
 
-var upvoteUrl = "http://webbro2.azurewebsites.net/web/index.php/comment/upvote";
-var downvoteUrl = "http://webbro2.azurewebsites.net/web/index.php/comment/downvote";
-var flagUrl = "http://webbro2.azurewebsites.net/web/index.php/comment/spam";
+//API endpoints
+var getComments = '/comment/get';
+var postComments = '/comment/new';
+var upvoteComment = "/comment/upvote";
+var downvoteComment = "/comment/downvote";
+var flagComment = "/comment/spam";
+var pageUrl;
+
 
 $(function(){
     $('#comment').on('submit', function(e){
@@ -18,6 +21,10 @@ $(function(){
         getUrlComments(pageUrl);
 	});
 });
+
+function getUrl(endPoint){
+    return baseUrl + endPoint;
+}
 
 function submitComment() {
     var pData = {
@@ -33,7 +40,7 @@ function submitComment() {
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: postCommentsURI,
+        url: getUrl(postComments),
         data: pData
     })
     .done(function(msg) {
@@ -95,7 +102,8 @@ function createCard(card){
     $(resultElement).append(section);
 }
 
-function doPostAction(url, id){
+function doPostAction(endPoint, id){
+    var url = getUrl(endPoint)
     showLoader();
     $(resultElement).html('');
     $.ajax({
@@ -129,7 +137,7 @@ function getUrlComments(tabUrl){
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: getCommentsURI,
+        url: getUrl(getComments),
         data: {'url': tabUrl}
     })
     .done(function(msg) {
