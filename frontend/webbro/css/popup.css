@@ -1,7 +1,3 @@
-/* Adapt as you please! But do not remove this header
-// Creative-Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)
-Developer: Anirudh R (http://anirudhr.com/about.php) */
-
 *{
 	border:0;
 	font:inherit;
@@ -30,6 +26,11 @@ body{
 
 .clearboth{
     clear:both;
+}
+
+.floatup {
+    top: -3px;
+    position: relative;
 }
 
 .card {
@@ -63,7 +64,6 @@ body{
   border-radius:50%;
   pointer-events:none;
 }
-
 
 ol,ul{
 	list-style:none;
