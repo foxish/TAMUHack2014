@@ -1,16 +1,22 @@
 {
-  "name": "WebCat",
-  "version": "1.2",
+  "name": "WebBro",
+  "version": "0.9",
   "manifest_version": 2,
-  "description": "WebCat",
+  "description": "A crowd-sourced helper for <PLACEHOLDER>",
   "browser_action": {
     "default_icon": "images/icon.png",
 	"default_popup": "popup.html"
   },
+  
   "permissions": [
 	"<all_urls>",
 	"bookmarks",
 	"tabs",
 	"storage"
-  ]
+  ],
+  "icons": { 
+            "32": "images/icon32.png",
+            "48": "images/icon48.png",
+            "128": "images/icon.png" 
+   }
 }

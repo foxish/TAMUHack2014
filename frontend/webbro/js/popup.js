@@ -1,32 +1,27 @@
 // Adapt as you please! But do not remove this header
 // Creative-Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)
-// Developer: Anirudh R (http://anirudhr.com/about.php) 
-
-//constants (of sorts)
-var LINEBREAK = "<br />";
-
-
-$(function(){//wait till DOM loads before referencing any elements
-	//setup event listeners for the search and add button
-	setEventListeners();
-	//write current URL stuff, prepare to add bookmark
-	getCurrentUrl(); 
-	showResults();
+$(function(){
+    //wait till DOM loads before referencing any elements
+    var comments = null;
+    chrome.tabs.getSelected(null, function(tab) {
+		get_url_comments(tab.url);
+	});
 });
 
-function showResults(){
-	chrome.storage.sync.get('search', function(obj) {
-		if(obj.search){
-			$('#search').val(obj.search);
-			$('#search_button').click();
-		}else{
-			getRecent();
-		}
-	});
+function get_url_comments(tab_url){
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: "http://localhost/web/TAMUHack2014/web/index.php/welcome/get_url_comment",
+      data: {}
+    })
+    .done(function(msg) {
+        //create_cards(msg);
+    });
 }
-function setResultCount(count){
-	$('#numresults').text(count);
-}
+
+
+
 
 function setEventListeners(){
 	$('#search_button').click(function(){
@@ -65,18 +60,7 @@ function setEventListeners(){
         }
     });
 }
-function getRecent(){
-	$('#result').empty();
-	var bookmarks = new Bookmarks();
-	bookmarks.getRecent();//getAllBmarks();//
-}
-function getCurrentUrl(){
-	//get current tab name & url
-	chrome.tabs.getSelected(null, function(tab) {
-		$('#addName').val(tab.title);
-		$('#currenturl').val(tab.url);
-	});
-}
+
 function writeToDom(title, urlString, id){
 	//create anchor
 	var anchor = $('<div>');
