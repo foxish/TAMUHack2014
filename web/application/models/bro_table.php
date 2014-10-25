@@ -39,7 +39,7 @@ class bro_table extends CI_Model {
         $fetched_data = array();
         if($this->_validate($data)) {
             $data['spam <'] = 5;
-            $fetched_data = $this->db->order_by('upvotes', 'desc')->get_where(self::$DB_TABLE, $data, 5)->result();
+            $fetched_data = $this->db->order_by('upvotes', 'desc')->order_by('downvotes', 'desc')->order_by('timestamp', 'desc')->get_where(self::$DB_TABLE, $data, 5)->result();
         }
 
 
