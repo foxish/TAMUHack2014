@@ -41,7 +41,6 @@ class Welcome extends CI_Controller {
 	public function get_url_comment() {
 		$data = $this->input->post();
 		$this->load->model('bro_table');
-		$data = array('url' => 'https://docs.google.com/document/d/1jO4n9lzfvuKhYyvsNMumQXY0sbzXi7UbRMM5bNv-Mps/edit');
 		return $this->bro_table->fetch_url_data($data);
 	}
 
