@@ -23,7 +23,7 @@ class bro_table extends CI_Model {
         $data['url'] = $this->clear_url($data['url']);
         $this->db->insert(self::$DB_TABLE, $data);
 
-        json_encode(array('response' => $this->db->_error_message()));
+        echo json_encode(array('response' => $this->db->_error_message()));
         return;
     }
 
