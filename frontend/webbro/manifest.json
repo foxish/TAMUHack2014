@@ -1,0 +1,16 @@
+{
+  "name": "WebCat",
+  "version": "1.2",
+  "manifest_version": 2,
+  "description": "WebCat",
+  "browser_action": {
+    "default_icon": "images/icon.png",
+	"default_popup": "popup.html"
+  },
+  "permissions": [
+	"<all_urls>",
+	"bookmarks",
+	"tabs",
+	"storage"
+  ]
+}

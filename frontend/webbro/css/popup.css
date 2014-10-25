@@ -1,0 +1,177 @@
+/* Adapt as you please! But do not remove this header
+// Creative-Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)
+Developer: Anirudh R (http://anirudhr.com/about.php) */
+
+*{
+	border:0;
+	font:inherit;
+	font-size:100%;
+	margin:0;
+	padding:0;
+	vertical-align:baseline;
+}
+body{
+	background-color:#000000;
+	color:#646464;
+	font:12px/16px 'Roboto', sans-serif;
+	height:475px;
+	overflow:hidden;
+}
+ol,ul{
+	list-style:none;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+}
+a img{
+	border:none;
+}
+a{
+	color:#000000;
+	text-decoration:none;
+}
+a:hover,a:focus{
+	color:#666;
+	text-decoration:underline;
+}
+p{
+	font-family:'Roboto', 
+	sans-serif;padding:0 2px 10px;
+}
+h4{
+	color:#ffffff;
+	font:20px 'Roboto', sans-serif;
+	padding:6px 0 0px;
+	text-align:center
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px rgba(255,255,255,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px rgba(255,255,255,0.5); 
+}
+.left{
+	float:left;
+	margin:0 15px 5px 0;
+}
+.right{
+	float:right;
+	margin:0 0 5px 15px;
+}
+h5{
+	font:20px 'Roboto', sans-serif;
+}
+#mainwrap{
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
+	width:340px;
+	height:100%;
+}
+#cardstyle{
+	border:0px solid #d4d4d4;
+	margin:10px auto 20px;
+	overflow:hidden;
+	padding:6px;
+	position:relative;
+	width:300px;
+	height:100%;
+}
+#content{
+	overflow:hidden;
+	position:relative;
+	width:300px;
+	height:130px;
+}
+img{
+	cursor:pointer;
+}
+/*horizontal rule in use*/
+hr.drop_shadow {
+    height: 10px;
+    border: 1;
+    box-shadow: inset 0 9px 9px -3px rgba(255,255,255,0.2);
+	border-radius: 5px;
+	display:block;
+	float:none;
+	width:100%;
+}
+/*truncate text with ellipsis*/
+.truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+}
+.resultlist{
+	cursor: pointer; 
+	width: 100%; 
+	height: 18px; 
+	display: block; 
+	background-color: #212121; 
+	color: #fff;
+	text-align:left; 
+	margin-top:10px;
+}
+.favicon{
+	margin-right: 7px;
+}
+.uibutton{
+	cursor: pointer; 
+	width: 60px; 
+	height: 18px; 
+	display: block; 
+	background-color: deepSkyBlue; 
+	color: #fff;
+	text-align:center; 
+	margin-top:10px;
+}
+#sec-search{
+	height:100%;
+	float:left;
+	margin-top:5px;
+	width:40%;
+	display:inline;
+}
+#sec-add{
+	height:100%;
+	float:right;
+	margin-top:5px;
+	width:40%;
+}
+.vr{
+	border-left:1px solid #ffffff;
+	height:150px;
+	margin-left:10%;
+	float:left;
+}
+.txtarea{
+	display:block; 
+	height: 20px;
+	width: 115px; 
+	margin-top:5px;
+
+}
+.resultcount{
+	color: #fff;
+	text-align: center;
+	margin-bottom: 2px;
+}
+#result{
+	height:290px;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.hoverlink{
+	float:right;
+	color: red;
+	margin-right:5px;
+	margin-top:1px;
+	height:100%;	
+}
