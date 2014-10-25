@@ -18,13 +18,13 @@ class Comment extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	public function new_comment() {
+	public function new() {
 		$data = $this->input->post();
 		$this->load->model('bro_table');
 		return $this->bro_table->add_new_comment($data);
 	}
 
-	public function get_url_comment() {
+	public function get() {
 		$data = $this->input->post();
 		$this->load->model('bro_table');
 		return $this->bro_table->fetch_url_data($data);
