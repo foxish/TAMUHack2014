@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '10.201.73.232';
-$db['default']['username'] = 'webbro2';
-$db['default']['password'] = 'secret#';
-$db['default']['database'] = 'webbro';
+$db['default']['hostname'] = 'us-cdbr-azure-east2-d.cloudapp.net';
+$db['default']['username'] = 'b99d80c7bd1545';
+$db['default']['password'] = '4927137c';
+$db['default']['database'] = 'webbrodb';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
