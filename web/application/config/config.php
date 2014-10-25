@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/web/TAMUHack2014/web/';
+$config['base_url']	= 'http://webbro2.azurewebsites.net/web/';
 
 /*
 |--------------------------------------------------------------------------
